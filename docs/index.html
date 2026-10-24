@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OEM Part Normalizer – Automotive & Truck Part Number Parser | Powered by CrazyPartSnatcher</title>
+  <meta name="description" content="Production-ready TypeScript library for normalizing, formatting, and generating search variants for commercial vehicle and automotive OEM parts (MAN, Mercedes-Benz, Bosch, Scania, DAF, Volvo Trucks)." />
+  <link rel="canonical" href="https://www.crazypartsnatcher.com" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    code, pre, .font-mono { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen antialiased selection:bg-amber-500 selection:text-slate-950">
+
+  <!-- Header & Navigation -->
+  <header class="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="https://www.crazypartsnatcher.com" target="_blank" rel="noopener" class="flex items-center gap-2 group">
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-amber-500 text-slate-950 font-black text-lg shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform">
+            ⚡
+          </span>
+          <span class="font-extrabold text-lg tracking-tight text-white group-hover:text-amber-400 transition-colors">
+            CrazyPartSnatcher
+          </span>
+        </a>
+        <span class="hidden sm:inline-block text-xs font-semibold px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 border border-slate-700">
+          Open Source
+        </span>
+      </div>
+
+      <nav class="flex items-center gap-4 text-sm font-medium">
+        <a href="#demo" class="text-slate-300 hover:text-white transition-colors">Live Demo</a>
+        <a href="#quickstart" class="text-slate-300 hover:text-white transition-colors">Quickstart</a>
+        <a href="https://www.npmjs.com/package/@crazypartsnatcher/oem-normalizer" target="_blank" rel="noopener" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-rose-950/50 text-rose-300 border border-rose-800/60 hover:bg-rose-900/50 transition-colors text-xs font-semibold">
+          npm v1.0.0
+        </a>
+        <a href="https://github.com/Tom7668h/oem-part-normalizer" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 font-semibold text-xs transition-colors">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-24">
+    <div class="text-center max-w-3xl mx-auto">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-wider mb-6">
+        <span>Zero-Dependency TypeScript Engine</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+        Master the Automotive <br class="hidden sm:inline" />
+        <span class="bg-gradient-to-r from-amber-400 via-orange-400 to-amber-200 bg-clip-text text-transparent">
+          Part Number Chaos
+        </span>
+      </h1>
+      <p class="mt-6 text-lg sm:text-xl text-slate-300 leading-relaxed">
+        High-performance normalizer, variant generator, and catalog schema detector for automotive & commercial vehicle OEM/OES references. Built to power the core search of 
+        <a href="https://www.crazypartsnatcher.com" target="_blank" rel="noopener" class="text-amber-400 font-semibold hover:underline decoration-amber-400/50 underline-offset-4">
+          CrazyPartSnatcher – Preisvergleich für Nutzfahrzeug- & Lkw-Ersatzteile
+        </a>.
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <div class="flex items-center bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-sm font-mono text-slate-200 shadow-inner">
+          <span class="text-amber-400 mr-2">$</span>
+          <span>npm i @crazypartsnatcher/oem-normalizer</span>
+        </div>
+        <a href="#demo" class="px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm shadow-lg shadow-amber-500/25 transition-all">
+          Try Interactive Demo
+        </a>
+      </div>
+    </div>
+
+    <!-- Live Interactive Tool Section -->
+    <section id="demo" class="mt-20 scroll-mt-24">
+      <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl backdrop-blur">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+          <div>
+            <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+              <span>⚡ Live OEM Normalizer Demo</span>
+            </h2>
+            <p class="text-sm text-slate-400 mt-1">Test any OEM reference in real time directly in your browser.</p>
+          </div>
+          <div class="flex flex-wrap gap-2 text-xs font-mono">
+            <button onclick="setSample('81.50110.0144')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700">MAN Drum</button>
+            <button onclick="setSample('A 000 420 00 20')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700">Mercedes Actros</button>
+            <button onclick="setSample('0 281 002 461')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700">Bosch Sensor</button>
+            <button onclick="setSample('4.61234')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700">DT Spare Parts</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-8">
+          <!-- Input Side -->
+          <div class="lg:col-span-5 space-y-4">
+            <label for="oemInput" class="block text-xs font-semibold uppercase tracking-wider text-slate-400">
+              Input Part Number:
+            </label>
+            <input
+              id="oemInput"
+              type="text"
+              value="81.50110.0144"
+              placeholder="e.g. 81.50110.0144 or A 000 420 00 20"
+              class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-white font-mono text-lg focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 shadow-inner"
+              oninput="runNormalization()"
+            />
+
+            <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800/80 space-y-3">
+              <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block">Live Price Comparison:</span>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                Connect this reference directly with verified aftermarket & OE supplier listings:
+              </p>
+              <a
+                id="searchButton"
+                href="https://www.crazypartsnatcher.com/shop?q=81501100144"
+                target="_blank"
+                rel="noopener"
+                class="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-bold text-sm shadow-lg shadow-amber-500/20 transition-all"
+              >
+                <span>Live-Vergleich auf CrazyPartSnatcher prüfen</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Output Side -->
+          <div class="lg:col-span-7 space-y-4 font-mono text-xs">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="p-4 rounded-xl bg-slate-950 border border-slate-800">
+                <span class="text-slate-500 block uppercase font-semibold text-[10px]">Canonical Normalized (SQL / Index)</span>
+                <span id="resNormalized" class="text-amber-400 text-base font-bold mt-1 block">81501100144</span>
+              </div>
+              <div class="p-4 rounded-xl bg-slate-950 border border-slate-800">
+                <span class="text-slate-500 block uppercase font-semibold text-[10px]">Formatted Display (Invoice / UI)</span>
+                <span id="resFormatted" class="text-emerald-400 text-base font-bold mt-1 block">81.50110.0144</span>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-950 border border-slate-800">
+              <span class="text-slate-500 block uppercase font-semibold text-[10px] mb-2">Detected Manufacturer Schema</span>
+              <div id="resBrands" class="flex flex-wrap gap-2">
+                <span class="px-2.5 py-1 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 font-semibold">MAN</span>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-950 border border-slate-800">
+              <span class="text-slate-500 block uppercase font-semibold text-[10px] mb-2">Generated Fulltext Search Variants</span>
+              <div id="resVariants" class="flex flex-wrap gap-1.5 max-h-36 overflow-y-auto">
+                <!-- Dynamically filled -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Section -->
+    <section class="mt-20">
+      <h2 class="text-3xl font-bold text-white text-center">Why Standard Exact-String Search Fails</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+        <div class="p-6 rounded-xl bg-slate-900 border border-slate-800">
+          <div class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold mb-4">1</div>
+          <h3 class="text-lg font-bold text-white mb-2">Supplier Notation Drift</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Suppliers export CSV feeds with hyphens (<code class="text-amber-300">81.50110-0144</code>), dots, or spaces. Standard SQL exact matches miss up to 60% of inventory cross-references.
+          </p>
+        </div>
+        <div class="p-6 rounded-xl bg-slate-900 border border-slate-800">
+          <div class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold mb-4">2</div>
+          <h3 class="text-lg font-bold text-white mb-2">Daimler 'A' Prefix Gap</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Mercedes-Benz parts are frequently indexed as <code class="text-amber-300">A 000 420 00 20</code>, but mechanics search for <code class="text-amber-300">0004200020</code>. The normalizer reconciles both schemas.
+          </p>
+        </div>
+        <div class="p-6 rounded-xl bg-slate-900 border border-slate-800">
+          <div class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold mb-4">3</div>
+          <h3 class="text-lg font-bold text-white mb-2">Multi-Supplier Price Matching</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Built as the core comparison engine for <a href="https://www.crazypartsnatcher.com" class="text-amber-400 hover:underline">CrazyPartSnatcher</a>, matching Bosch, Hella, Brembo, Mahle, and Febi Bilstein offers.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quickstart Code -->
+    <section id="quickstart" class="mt-20 scroll-mt-24">
+      <h2 class="text-3xl font-bold text-white text-center mb-8">TypeScript / JavaScript Quickstart</h2>
+      <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-2xl">
+        <div class="bg-slate-950 px-4 py-3 border-b border-slate-800 flex items-center justify-between text-xs text-slate-400 font-mono">
+          <span>example.ts</span>
+          <span class="text-amber-400">Zero Dependencies</span>
+        </div>
+        <pre class="p-6 text-sm text-slate-200 overflow-x-auto leading-relaxed"><code><span class="text-amber-400">import</span> { normalizeOem, generateSearchVariants, buildPartSearchUrl } <span class="text-amber-400">from</span> <span class="text-emerald-400">'@crazypartsnatcher/oem-normalizer'</span>;
+
+<span class="text-slate-500">// 1. Strip punctuation & unify to uppercase alphanumeric</span>
+<span class="text-amber-400">const</span> clean = <span class="text-blue-400">normalizeOem</span>(<span class="text-emerald-400">'81.50110.0144'</span>);
+console.<span class="text-blue-400">log</span>(clean); <span class="text-slate-500">// '81501100144'</span>
+
+<span class="text-slate-500">// 2. Generate search variations for SQL / Elasticsearch index</span>
+<span class="text-amber-400">const</span> variants = <span class="text-blue-400">generateSearchVariants</span>(<span class="text-emerald-400">'A0004200020'</span>);
+console.<span class="text-blue-400">log</span>(variants);
+<span class="text-slate-500">// ['A0004200020', '0004200020', 'A 000 420 00 20', '000 420 00 20', ...]</span>
+
+<span class="text-slate-500">// 3. Build comparison link on CrazyPartSnatcher</span>
+<span class="text-amber-400">const</span> url = <span class="text-blue-400">buildPartSearchUrl</span>(<span class="text-emerald-400">'81.50110.0144'</span>);
+console.<span class="text-blue-400">log</span>(url); <span class="text-slate-500">// 'https://www.crazypartsnatcher.com/shop?q=81501100144'</span></code></pre>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-900 bg-slate-950 py-12 text-sm text-slate-500 text-center">
+    <div class="max-w-6xl mx-auto px-4">
+      <p>
+        Released under the MIT License • Copyright &copy; 2026 
+        <a href="https://www.crazypartsnatcher.com" target="_blank" rel="noopener" class="text-amber-400 hover:underline font-semibold">
+          CrazyPartSnatcher – Preisvergleich für Nutzfahrzeug- & Lkw-Ersatzteile
+        </a>
+      </p>
+      <p class="mt-2 text-xs text-slate-600">
+        Hosted on GitHub Pages • Official package available on <a href="https://www.npmjs.com/package/@crazypartsnatcher/oem-normalizer" class="text-slate-400 hover:text-white">npm</a>.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Browser Normalizer Logic (Embedded for Instant Live Demo) -->
+  <script>
+    function normalizeOem(input) {
+      if (!input) return '';
+      return String(input).toUpperCase().replace(/[^A-Z0-9]/g, '').trim();
+    }
+
+    function generateVariants(input) {
+      const norm = normalizeOem(input);
+      if (!norm) return [];
+      const set = new Set([norm]);
+
+      if (/^\d{11}$/.test(norm)) {
+        set.add(`${norm.slice(0, 2)}.${norm.slice(2, 7)}.${norm.slice(7)}`);
+        set.add(`${norm.slice(0, 2)}.${norm.slice(2, 7)}-${norm.slice(7)}`);
+        set.add(`${norm.slice(0, 2)} ${norm.slice(2, 7)} ${norm.slice(7)}`);
+      } else if (/^A\d{10}$/.test(norm)) {
+        const d = norm.slice(1);
+        set.add(d);
+        set.add(`A ${d.slice(0, 3)} ${d.slice(3, 6)} ${d.slice(6, 8)} ${d.slice(8)}`);
+        set.add(`${d.slice(0, 3)} ${d.slice(3, 6)} ${d.slice(6, 8)} ${d.slice(8)}`);
+      } else if (/^\d{10}$/.test(norm)) {
+        set.add(`A${norm}`);
+        set.add(`A ${norm.slice(0, 3)} ${norm.slice(3, 6)} ${norm.slice(6, 8)} ${norm.slice(8)}`);
+      } else if (/^[0-9F]\d{9}$/.test(norm)) {
+        set.add(`${norm.slice(0, 1)} ${norm.slice(1, 4)} ${norm.slice(4, 7)} ${norm.slice(7)}`);
+        set.add(`${norm.slice(0, 1)}-${norm.slice(1, 4)}-${norm.slice(4, 7)}-${norm.slice(7)}`);
+      } else if (/^\d{6,7}$/.test(norm)) {
+        set.add(`${norm.slice(0, norm.length - 5)}.${norm.slice(norm.length - 5)}`);
+      }
+      return Array.from(set);
+    }
+
+    function detectBrands(norm) {
+      const brands = [];
+      if (/^\d{11}$/.test(norm)) brands.push('MAN');
+      if (/^A\d{10}$/.test(norm) || (/^\d{10}$/.test(norm) && /^(000|960|940)/.test(norm))) brands.push('Mercedes-Benz / Daimler Truck');
+      if (/^[0-9F]\d{9}$/.test(norm)) brands.push('Bosch');
+      if (/^\d{7}$/.test(norm)) brands.push('DAF / Scania');
+      if (/^\d{8}$/.test(norm)) brands.push('Volvo Trucks');
+      if (/^74\d{8}$/.test(norm)) brands.push('Renault Trucks');
+      if (/^K\d{6}$/.test(norm)) brands.push('Knorr-Bremse');
+      if (/^[1-9]\d{5,6}$/.test(norm)) brands.push('DT Spare Parts');
+      return brands.length ? brands : ['Generic OEM / Aftermarket'];
+    }
+
+    function runNormalization() {
+      const raw = document.getElementById('oemInput').value;
+      const norm = normalizeOem(raw);
+      const variants = generateVariants(norm);
+      const brands = detectBrands(norm);
+
+      document.getElementById('resNormalized').innerText = norm || '—';
+      document.getElementById('resFormatted').innerText = variants[1] || norm || '—';
+
+      const brandsContainer = document.getElementById('resBrands');
+      brandsContainer.innerHTML = brands.map(b => 
+        `<span class="px-2.5 py-1 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 font-semibold">${b}</span>`
+      ).join('');
+
+      const variantsContainer = document.getElementById('resVariants');
+      variantsContainer.innerHTML = variants.map(v => 
+        `<span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">${v}</span>`
+      ).join('');
+
+      const btn = document.getElementById('searchButton');
+      btn.href = norm ? `https://www.crazypartsnatcher.com/shop?q=${encodeURIComponent(norm)}` : 'https://www.crazypartsnatcher.com/shop';
+    }
+
+    function setSample(val) {
+      document.getElementById('oemInput').value = val;
+      runNormalization();
+    }
+
+    // Initial run
+    runNormalization();
+  </script>
+</body>
+</html>
