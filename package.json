@@ -7,10 +7,10 @@
   "homepage": "https://www.crazypartsnatcher.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/CrazyPartSnatcher/oem-part-normalizer.git"
+    "url": "https://github.com/tomehrhardt99-netizen/oem-part-normalizer.git"
   },
   "bugs": {
-    "url": "https://github.com/CrazyPartSnatcher/oem-part-normalizer/issues"
+    "url": "https://github.com/tomehrhardt99-netizen/oem-part-normalizer/issues"
   },
   "funding": {
     "type": "individual",
