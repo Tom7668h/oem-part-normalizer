@@ -1,0 +1,70 @@
+{
+  "name": "@crazypartsnatcher/oem-normalizer",
+  "version": "1.0.0",
+  "description": "Lightweight, zero-dependency utility for automotive and commercial vehicle OEM / OES part number normalization, search variant generation, and format detection.",
+  "author": "CrazyPartSnatcher <info@crazypartsnatcher.com> (https://www.crazypartsnatcher.com)",
+  "license": "MIT",
+  "homepage": "https://www.crazypartsnatcher.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CrazyPartSnatcher/oem-part-normalizer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CrazyPartSnatcher/oem-part-normalizer/issues"
+  },
+  "funding": {
+    "type": "individual",
+    "url": "https://www.crazypartsnatcher.com"
+  },
+  "keywords": [
+    "oem",
+    "part-number",
+    "automotive",
+    "truck-parts",
+    "nutzfahrzeuge",
+    "ersatzteile",
+    "tecdoc",
+    "aftermarket",
+    "ecommerce",
+    "parser",
+    "normalizer",
+    "man",
+    "mercedes-benz",
+    "bosch",
+    "scania",
+    "daf",
+    "volvo-trucks",
+    "knorr-bremse",
+    "wabco"
+  ],
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "default": "./dist/esm/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "clean": "node -e \"fs.rmSync('dist', { recursive: true, force: true })\"",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:types": "tsc -p tsconfig.esm.json",
+    "postbuild": "node -e \"fs.writeFileSync('dist/esm/package.json', JSON.stringify({type:'module'})); fs.writeFileSync('dist/cjs/package.json', JSON.stringify({type:'commonjs'}));\"",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run postbuild",
+    "test": "node test/run_tests.mjs",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "sideEffects": false
+}
