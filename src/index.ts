@@ -560,7 +560,7 @@ export function buildPartSearchUrl(
   return `${baseUrl}/shop?${queryParams.toString()}`;
 }
 
-export default {
+const oemNormalizer = {
   normalizeOem,
   isLikelyOem,
   generateSearchVariants,
@@ -569,3 +569,5 @@ export default {
   formatOemDisplay,
   buildPartSearchUrl
 };
+
+export default oemNormalizer;
