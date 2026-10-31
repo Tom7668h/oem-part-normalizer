@@ -1,16 +1,16 @@
 {
   "name": "@crazypartsnatcher/oem-normalizer",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Lightweight, zero-dependency utility for automotive and commercial vehicle OEM / OES part number normalization, search variant generation, and format detection.",
-  "author": "CrazyPartSnatcher <info@crazypartsnatcher.com> (https://www.crazypartsnatcher.com)",
+  "author": "CrazyPartSnatcher Engineering <info@crazypartsnatcher.com> (https://www.crazypartsnatcher.com)",
   "license": "MIT",
   "homepage": "https://www.crazypartsnatcher.com",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tomehrhardt99-netizen/oem-part-normalizer.git"
+    "url": "git+https://github.com/Tom7668h/oem-part-normalizer.git"
   },
   "bugs": {
-    "url": "https://github.com/tomehrhardt99-netizen/oem-part-normalizer/issues"
+    "url": "https://github.com/Tom7668h/oem-part-normalizer/issues"
   },
   "funding": {
     "type": "individual",
@@ -23,7 +23,7 @@
     "truck-parts",
     "nutzfahrzeuge",
     "ersatzteile",
-    "tecdoc",
+    "aftermarket-catalog",
     "aftermarket",
     "ecommerce",
     "parser",

@@ -7,7 +7,7 @@
  * Powers search index normalizations for commercial vehicles (MAN, Mercedes-Benz, DAF, Scania, Volvo, Iveco, Renault)
  * and aftermarket suppliers (Bosch, Hella, Knorr-Bremse, WABCO, DT Spare Parts, Febi Bilstein, ATE, Mahle).
  *
- * @author CrazyPartSnatcher Team
+ * @author CrazyPartSnatcher Engineering
  * @license MIT
  * @see https://www.crazypartsnatcher.com
  * @see https://www.crazypartsnatcher.com/shop

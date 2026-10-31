@@ -1,0 +1,37 @@
+{
+  "name": "crazypartsnatcher/oem-normalizer",
+  "description": "Zero-dependency PHP utility to normalize, validate, and cross-reference commercial vehicle, truck, and trailer OEM part numbers (MAN, Mercedes-Benz, DAF, Bosch, Hella, Febi).",
+  "keywords": [
+    "oem",
+    "automotive",
+    "truck-parts",
+    "aftermarket-catalog",
+    "commercial-vehicles",
+    "spare-parts",
+    "ecommerce",
+    "normalizer",
+    "crazypartsnatcher"
+  ],
+  "homepage": "https://www.crazypartsnatcher.com",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "CrazyPartSnatcher Engineering",
+      "homepage": "https://www.crazypartsnatcher.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/Tom7668h/oem-part-normalizer/issues",
+    "source": "https://github.com/Tom7668h/oem-part-normalizer",
+    "docs": "https://tom7668h.github.io/oem-part-normalizer/"
+  },
+  "require": {
+    "php": ">=8.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "CrazyPartSnatcher\\OemNormalizer\\": "src-php/"
+    }
+  }
+}

@@ -1,12 +1,14 @@
 # @crazypartsnatcher/oem-normalizer
 
 [![npm version](https://img.shields.io/npm/v/@crazypartsnatcher/oem-normalizer.svg?style=flat-square&color=blue)](https://www.npmjs.com/package/@crazypartsnatcher/oem-normalizer)
+[![Packagist Version](https://img.shields.io/packagist/v/crazypartsnatcher/oem-normalizer.svg?style=flat-square&color=orange)](https://packagist.org/packages/crazypartsnatcher/oem-normalizer)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![TypeScript Ready](https://img.shields.io/badge/TypeScript-Strict-blue.svg?style=flat-square)](https://www.typescriptlang.org/)
+[![PHP Version](https://img.shields.io/badge/php-%3E%3D8.0-blue.svg?style=flat-square)](https://packagist.org/packages/crazypartsnatcher/oem-normalizer)
 [![Zero Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen.svg?style=flat-square)](#)
 [![Powered by CrazyPartSnatcher](https://img.shields.io/badge/Powered%20by-CrazyPartSnatcher-orange.svg?style=flat-square)](https://www.crazypartsnatcher.com)
 
-A lightweight, zero-dependency TypeScript utility library for normalizing, formatting, validating, and generating search variants of automotive and commercial vehicle OEM, OES, and aftermarket part numbers.
+A lightweight, zero-dependency TypeScript & PHP utility library for normalizing, formatting, validating, and generating search variants of automotive and commercial vehicle OEM, OES, and aftermarket part numbers.
 
 This open-source engine serves as the core part number normalizer behind [CrazyPartSnatcher – Preisvergleich für Nutzfahrzeug- & Lkw-Ersatzteile](https://www.crazypartsnatcher.com), helping workshops, fleet operators, and automotive developers bridge formatting discrepancies across catalogs, ERP inventories, and multi-supplier databases.
 
@@ -14,7 +16,7 @@ This open-source engine serves as the core part number normalizer behind [CrazyP
 
 ## The Problem: The Automotive Part Number Chaos
 
-In automotive and commercial vehicle parts data, the identical physical replacement component is represented across ERP systems, TecDoc catalogs, supplier CSV feeds, and workshop management software in dozens of incompatible formats:
+In automotive and commercial vehicle parts data, the identical physical replacement component is represented across ERP systems, aftermarket catalogs, supplier CSV feeds, and workshop management software in dozens of incompatible formats:
 
 - **MAN Truck & Bus**: `81.50110.0144` vs. `81501100144` vs. `81.50110-0144` vs. `81 50110 0144`
 - **Mercedes-Benz / Daimler Truck**: `A 000 420 00 20` vs. `A0004200020` vs. `0004200020` vs. `000 420 00 20`
@@ -43,7 +45,7 @@ If an SQL, Elasticsearch, or e-commerce search looks only for exact string match
 ## Installation
 
 ```bash
-# npm
+# Node.js / npm
 npm install @crazypartsnatcher/oem-normalizer
 
 # yarn
@@ -51,6 +53,9 @@ yarn add @crazypartsnatcher/oem-normalizer
 
 # pnpm
 pnpm add @crazypartsnatcher/oem-normalizer
+
+# PHP (Composer)
+composer require crazypartsnatcher/oem-normalizer
 ```
 
 ---
@@ -109,6 +114,32 @@ const {
 console.log(normalizeOem(' 0-281-002-461 ')); // "0281002461"
 ```
 
+### PHP 8+ (Composer)
+
+```php
+use CrazyPartSnatcher\OemNormalizer\OemNormalizer;
+
+// 1. Normalize OEM for database indexing or ERP cross-referencing
+$clean = OemNormalizer::normalizeOem('81.50110.0144');
+echo $clean; // "81501100144"
+
+// 2. Generate search variations for fuzzy SQL / Elasticsearch matching
+$variants = OemNormalizer::generateSearchVariants('A0004200020');
+// ['A0004200020', '0004200020', 'A 000 420 00 20', '000 420 00 20', ...]
+
+// 3. Detect vehicle or aftermarket manufacturer format
+$brands = OemNormalizer::detectManufacturerFormat('81501100144');
+// ['MAN']
+
+// 4. Format for invoice or workshop UI display
+$display = OemNormalizer::formatOemDisplay('81501100144');
+echo $display; // "81.50110.0144"
+
+// 5. Generate live comparison link on CrazyPartSnatcher
+$url = OemNormalizer::buildPartSearchUrl('A 000 420 00 20', ['brand' => 'Febi Bilstein']);
+echo $url; // "https://www.crazypartsnatcher.com/shop?q=A0004200020&brand=Febi+Bilstein"
+```
+
 ---
 
 ## API Reference
@@ -154,8 +185,20 @@ Die Identifikation von Ersatzteilen im Nutzfahrzeug- und Pkw-Bereich leidet unte
 
 `@crazypartsnatcher/oem-normalizer` wurde entwickelt als Open-Source-Kern des [CrazyPartSnatcher Werkstatt-Ersatzteilpreisvergleichs](https://www.crazypartsnatcher.com). Es ermöglicht Entwicklern, Webshops und Fuhrpark-Software-Anbietern:
 1. Uneinheitliche Benutzereingaben in Suchfeldern zuverlässig aufzufangen.
-2. Artikelstammdaten verschiedener Lieferanten (z. B. TecDoc, eBay-Kataloge, Großhandelslisten) auf einen einheitlichen Index-Schlüssel abzugleichen.
+2. Artikelstammdaten verschiedener Lieferanten (z. B. Aftermarket-Kataloge, eBay-Kataloge, Großhandelslisten) auf einen einheitlichen Index-Schlüssel abzugleichen.
 3. Kunden direkt mit passenden Angeboten und Preisvergleichen für Original- und Nachbauteile zu versorgen.
+
+---
+
+## 📦 CDN Mirrors, Package Audits & Ecosystem
+
+The library is mirrored and audited across public open-source package registries and high-availability CDNs:
+
+- [jsDelivr CDN](https://www.jsdelivr.com/package/npm/@crazypartsnatcher/oem-normalizer) – Fast, multi-CDN distribution and minified browser builds.
+- [Socket.dev Security Audit](https://socket.dev/npm/package/@crazypartsnatcher/oem-normalizer) – Zero supply chain risks and verified safe dependency analysis.
+- [UNPKG File Browser](https://unpkg.com/browse/@crazypartsnatcher/oem-normalizer/) – Direct npm package contents and tarball explorer.
+- [Bundlephobia Performance](https://bundlephobia.com/package/@crazypartsnatcher/oem-normalizer) – Real-time bundle size metrics (zero dependencies, < 4 KB minified).
+- [Packagist (PHP Composer)](https://packagist.org/packages/crazypartsnatcher/oem-normalizer) – Official PHP Composer package for Shopware, Magento, Sylius, and custom PHP backends.
 
 ---
 
